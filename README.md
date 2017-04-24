@@ -96,11 +96,9 @@ display_graph('iter','sol_optimality_gap', {'FISTA', 'ADMM'}, {w_fista, w_admm},
 
 * Output results 
 
-<img src="https://dl.dropboxusercontent.com/u/869853/github/SparseGDLibrary/images/rosenbrock_cost_gnorm.png" width="900">
+<img src="https://dl.dropboxusercontent.com/u/869853/Github/SparseGDLibrary/images/iter_cost_solgap.png" width="900">
 <br /><br />
 
-<img src="https://dl.dropboxusercontent.com/u/869853/github/SparseGDLibrary/images/rosenbrock_convergence.png" width="900">
-<br /><br />
 
 
 Usage example 1: more plots
@@ -117,6 +115,11 @@ The final coefficients in each position of the solution are displayed in compari
 ```Matlab
 display_graph('coeff_pos','coeff_amp', {'FISTA','ADMM','Original (x0)'}, {w_fista, w_admm, x0}, {w_fista, w_admm, x0}, 'linear', 'line-with-mark', 1);           
 ```
+
+* Output results 
+
+<img src="https://dl.dropboxusercontent.com/u/869853/Github/SparseGDLibrary/images/coeff_pos_amp.png" width="500">
+<br /><br />
 
 Usage example 2 ([Lasso problem](https://en.wikipedia.org/wiki/Lasso_(statistics)) with cross-validation)
 ----------------------------

@@ -110,6 +110,10 @@ The decrease of the l1-norm of the solution according to iterations is illustrat
 display_graph('iter','l1-norm', {'FISTA', 'ADMM'}, {w_fista, w_admm}, {info_fista, info_admm}, 'linear');
 ```
 
+<img src="https://dl.dropboxusercontent.com/u/869853/Github/SparseGDLibrary/images/iter_l1norm.png" width="500">
+<br /><br />
+
+
 The final coefficients in each position of the solution are displayed in comparisn with the ogirinal input sparse signal.
 
 ```Matlab
@@ -184,7 +188,7 @@ end
 
 * Output results 
 
-<img src="https://dl.dropboxusercontent.com/u/869853/github/SparseGDLibrary/images/lasso_cv.png" width="900">
+<img src="https://dl.dropboxusercontent.com/u/869853/Github/SparseGDLibrary/images/lasso_cv.png" width="900">
 <br /><br />
 
 

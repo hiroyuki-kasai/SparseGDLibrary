@@ -39,16 +39,16 @@ Folders and files
 ---------
 
 <pre>
-./                      - Top directory.
-./README.md             - This readme file.
-./run_me_first.m        - The scipt that you need to run first.
-./demo.m                - Demonstration script to check and understand this package easily. 
-./demo_lasso_cv.m       - Demonstration script for lasso problem with cross validation. 
-|plotter/               - Contains plotting tools to show convergence results and various plots.
-|tool/                  - Some auxiliary tools for this project.
-|problem/               - Problem definition files to be solved.
-|gd_solver/             - Contains various gradient descent optimization algorithms.
-|gd_test/               - Some helpful test scripts to use this package.
+./                          - Top directory.
+./README.md                 - This readme file.
+./run_me_first.m            - The scipt that you need to run first.
+./demo.m                    - Demonstration script to check and understand this package easily. 
+./demo_lasso_cv.m           - Demonstration script for lasso problem with cross validation. 
+|plotter/                   - Contains plotting tools to show convergence results and various plots.
+|tool/                      - Some auxiliary tools for this project.
+|problem/                   - Problem definition files to be solved.
+|sparse_gd_solver/          - Contains various gradient descent optimization algorithms.
+|sparse_gd_test/            - Some helpful test scripts to use this package.
 </pre>
                                  
 
@@ -124,6 +124,7 @@ display_graph('coeff_pos','coeff_amp', {'FISTA','ADMM','Original (x0)'}, {w_fist
 
 <img src="https://dl.dropboxusercontent.com/u/869853/Github/SparseGDLibrary/images/coeff_pos_amp.png" width="500">
 <br /><br />
+
 
 Usage example 2 ([Lasso problem](https://en.wikipedia.org/wiki/Lasso_(statistics)) with cross-validation)
 ----------------------------

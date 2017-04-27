@@ -14,7 +14,7 @@ function [ w_min, f_min, f_max ] = draw_3D_surface(cost, n, x_min, x_max, y_min,
 %       f_max       maximum cost value
 % 
 %
-% This file is part of SGDLibrary.
+% This file is part of SGDLibrary, GDLibrary and SparseGDLibrary.
 %
 % Created by H.Kasai on Oct. 28, 2016
 

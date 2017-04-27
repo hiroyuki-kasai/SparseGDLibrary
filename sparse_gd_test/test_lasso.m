@@ -23,7 +23,7 @@ function [] = test_lasso()
     
     
     %% define problem definitions
-    problem = lasso(A, b, lambda);
+    problem = lasso_problem(A, b, lambda);
 
     
     %% initialize

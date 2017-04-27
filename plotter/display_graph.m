@@ -9,7 +9,7 @@ function [ ] = display_graph(x_category, y_category, algorithm_list, w_list, inf
 %       info_list           statistics produced by each algorithm
 % 
 %
-% This file is part of GDLibrary and SGDLibrary.
+% This file is part of SGDLibrary, GDLibrary and SparseGDLibrary.
 %
 % Created by H.Kasai on Oct. 23, 2016
 % Modified by H.Kasai on Apr. 24, 2017

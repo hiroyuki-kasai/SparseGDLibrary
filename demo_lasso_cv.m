@@ -37,12 +37,13 @@ function demo_lasso_cv()
     aprox_err = zeros(num_cv,1);  
     
     % set options
-    options.w_init = zeros(n,1);     
+    options.w_init = zeros(n,1); 
+    options.verbose = 1;
     
     %% perform cross-validations
     for i=1:length(lambda_array)
         lambda = lambda_array(i);
-        problem = lasso(A, b, lambda);
+        problem = lasso_problem(A, b, lambda);
         
         [W(:,i), infos] = fista(problem, options);
         l1_norm(i) = infos.reg(end);
@@ -51,11 +52,11 @@ function demo_lasso_cv()
     
 
     %% plot all
-    % display l1-norm vs. coefficient
+    % l1-norm vs. coefficient
     display_graph('l1-norm','coeffs', algorithm, l1_norm, {W}, 'linear');
-    % display lambda vs. coefficient
+    % lambda vs. coefficient
     display_graph('lambda','coeffs', algorithm, lambda_array, {W}, 'linear');
-    % display l1-norm vs. approximation error
+    % l1-norm vs. approximation error
     display_graph('l1-norm','aprox_err', algorithm, l1_norm, {aprox_err}, 'linear');    
     
 end

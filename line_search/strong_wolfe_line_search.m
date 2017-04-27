@@ -21,7 +21,7 @@ function [alphas,fs,gs] = strong_wolfe_line_search(problem, d, x0, c1, c2)
 %   guipenglee@gmail.com
 %
 %
-% This file is part of GDLibrary
+% This file is part of SGDLibrary, GDLibrary and SparseGDLibrary.
 %
 % Modified by H.Kasai on November 1, 2016
 

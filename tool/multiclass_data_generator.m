@@ -13,7 +13,7 @@ function [data] = multiclass_data_generator(n, d, l, std)
 %       data.x_test     test data of x of size d x n*l.
 %       data.y_test     test data of y of size l x n*l.
 %
-% This file is part of SGDLibrary.
+% This file is part of SGDLibrary, GDLibrary and SparseGDLibrary.
 %
 % Created H.Kasai on Oct. 25, 2016
 

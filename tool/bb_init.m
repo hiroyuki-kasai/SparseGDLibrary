@@ -3,7 +3,7 @@ function [ step_init ] = bb_init(problem, w)
 % Barzilai-Borwein step-size initialization:
 % 
 %
-% This file is part of GDLibrary.
+% This file is part of SGDLibrary, GDLibrary and SparseGDLibrary.
 %
 % This file originally comes from https://github.com/bodono/apg.
 % Modifeid by H.Kasai on Apr. 17, 2017

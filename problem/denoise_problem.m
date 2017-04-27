@@ -1,5 +1,5 @@
-function [Problem] = lasso(A, b, lambda)
-% This file defines the lasso (least absolute shrinkage and selection operator) problem for L1 norm. 
+function [Problem] = tv_l1_problem(y, lambda)
+% This file defines the TV (Total Variation) problem with L1 norm. 
 %
 % Inputs:
 %       A           dictionary matrix of size dxn.
@@ -13,10 +13,10 @@ function [Problem] = lasso(A, b, lambda)
 %
 %           min f(w) = 1/2 * || A * w - b ||_2^2 + lambda * || w ||_1 ).
 %
-% "w" is the model parameter of size d vector.
+% "w" is the model parameter of size n vector.
 %
 %
-% This file is part of GDLibrary and SGDLibrary.
+% This file is part of SGDLibrary, GDLibrary and SparseGDLibrary.
 %
 % Created by H.Kasai on Apr. 17, 2017
 
@@ -47,8 +47,8 @@ function [Problem] = lasso(A, b, lambda)
 
     Problem.cost = @cost;
     function f = cost(w)
-        reg = reg(w);
-        f = 1/2 * sum((A * w - b).^2) + lambda * reg;
+        reg_val = reg(w);
+        f = 1/2 * sum((A * w - b).^2) + lambda * reg_val;
     end
 
     % calculate l1 norm
@@ -75,7 +75,7 @@ function [Problem] = lasso(A, b, lambda)
 
     Problem.grad = @grad;
     function g = grad(w, indices)
-        error('Not implemted yet.');
+        error('Not implemted yet.'); 
     end
 
     Problem.hess = @hess; 
@@ -91,6 +91,13 @@ function [Problem] = lasso(A, b, lambda)
     Problem.hess_vec = @hess_vec; 
     function hv = hess_vec(w, v, indices)
         error('Not implemted yet.');
+    end
+
+
+    % for shooting
+    Problem.shooting_grad = @shooting_grad;
+    function g = shooting_grad(w, j, indices)
+        g = A(:,j)'* (A(:,indices)* w(indices) - b);
     end
 
 

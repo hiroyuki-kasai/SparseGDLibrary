@@ -20,7 +20,7 @@ function [y] = logsumexp(X)
 %           = max_n + log (sum_{l=1}^L exp(x_{l,n}-max_n)).
 %
 %    
-% This file is part of SGDLibrary.
+% This file is part of SGDLibrary, GDLibrary and SparseGDLibrary.
 %
 % Created H.Kasai on Oct. 19, 2016
 

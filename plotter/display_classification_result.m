@@ -13,7 +13,7 @@ function [ ] = display_classification_result(problem, algorithms_list, w_list, y
 %       y_test              test data y         
 % 
 %
-% This file is part of SGDLibrary.
+% This file is part of SGDLibrary, GDLibrary and SparseGDLibrary.
 %
 % Created by H.Kasai on Oct. 23, 2016
 

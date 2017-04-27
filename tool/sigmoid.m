@@ -1,7 +1,7 @@
 function [y] = sigmoid(x)
 % Sigmoid function.
 %
-% This file is part of SGDLibrary.
+% This file is part of SGDLibrary, GDLibrary and SparseGDLibrary.
 %
 % Created H.Kasai on Oct. 17, 2016
 

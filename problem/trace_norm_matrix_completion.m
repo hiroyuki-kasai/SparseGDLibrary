@@ -16,7 +16,7 @@ function [Problem] = trace_norm_matrix_completion(A, mask, lambda)
 % "w" is the model parameter of size mxn vector, which is transformed to matrix W of size [m, n]. 
 %
 %
-% This file is part of GDLibrary and SGDLibrary.
+% This file is part of SGDLibrary, GDLibrary and SparseGDLibrary.
 %
 % Created by H.Kasai on Apr. 17, 2017
 

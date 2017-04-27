@@ -8,7 +8,7 @@ function [w, infos] = admm_lasso(problem, options)
 %       w           solution of w
 %       infos       information
 %
-% This file is part of GDLibrary and SGDLibrary.
+% This file is part of SparseGDLibrary.
 %
 % Originall code from
 % https://web.stanford.edu/~boyd/papers/admm/lasso/lasso.html.

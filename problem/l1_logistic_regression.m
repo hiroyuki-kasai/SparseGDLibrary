@@ -20,7 +20,7 @@ function [Problem] = l1_logistic_regression(x_train, y_train, x_test, y_test, va
 % "w" is the model parameter of size d vector.
 %
 %
-% This file is part of GDLibrary and SGDLibrary.
+% This file is part of SGDLibrary, GDLibrary and SparseGDLibrary.
 %
 % Created by H.Kasai on Apr. 18, 2017
 %

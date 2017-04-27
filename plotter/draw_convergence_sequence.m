@@ -7,7 +7,7 @@ function [  ] = draw_convergence_sequence(problem, opt_sol, algorithms_list, w_h
 %       w_history           solution history produced by each algorithm    
 % 
 %
-% This file is part of GDLibrary.
+% This file is part of SGDLibrary, GDLibrary and SparseGDLibrary.
 %
 % Created by H.Kasai on Oct. 31, 2016
 

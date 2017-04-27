@@ -8,7 +8,7 @@ function [w, infos] = apg(problem, options)
 %       w           solution of w
 %       infos       information
 %
-% This file is part of GDLibrary.
+% This file is part of SparseGDLibrary.
 %
 % Created by H.Kasai on Nov. 01, 2016
 % Modified by H.Kasai on Apr. 17, 2017

@@ -20,7 +20,7 @@ function Problem = l1_linear_svm(x_train, y_train, x_test, y_test, lambda)
 % "w" is the model parameter of size d vector.
 %
 %
-% This file is part of GDLibrary and SGDLibrary.
+% This file is part of SGDLibrary, GDLibrary and SparseGDLibrary.
 %
 % Created by H.Kasai on Feb. 17, 2016
 % Modified by H.Kasai on Oct. 26, 2016

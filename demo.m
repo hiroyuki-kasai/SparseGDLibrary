@@ -22,7 +22,7 @@ function  demo()
     
     
     %% define problem definitions
-    problem = lasso(A, b, lambda);
+    problem = lasso_problem(A, b, lambda);
 
     
     %% perform algorithms (FISTA and ADMM)

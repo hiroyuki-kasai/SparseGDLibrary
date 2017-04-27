@@ -73,7 +73,7 @@ function [] = test_lasso_cv()
     %% perform cross-validations
     for i=1:len
         lambda = lamnda_array(i);
-        problem = lasso(A, b, lambda);
+        problem = lasso_problem(A, b, lambda);
         
         [W(:,i), infos] = solver(problem, options);
         l1_norm(i) = infos.reg(end);

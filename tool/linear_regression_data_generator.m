@@ -13,7 +13,7 @@ function [data] = linear_regression_data_generator(n, d, std)
 %       data.y_test     test data of y of size 1 x n.
 %       data.w_opt      solusion.
 %
-% This file is part of SGDLibrary.
+% This file is part of SGDLibrary, GDLibrary and SparseGDLibrary.
 %
 % Created H.Kasai on Oct. 25, 2016
 

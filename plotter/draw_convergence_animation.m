@@ -7,7 +7,7 @@ function [  ] = draw_convergence_animation(problem, algorithms_list, w_history, 
 %       w_history           solution history produced by each algorithm    
 % 
 %
-% This file is part of SGDLibrary.
+% This file is part of SGDLibrary, GDLibrary and SparseGDLibrary.
 %
 % Created by H.Kasai on Oct. 28, 2016
 % Modified by H.Kasai on Mov. 02, 2016

@@ -29,8 +29,9 @@ List of [line-search](https://en.wikipedia.org/wiki/Line_search) algorithms avai
 
 Supported problems
 ---------
-* [Lasso](https://en.wikipedia.org/wiki/Lasso_(statistics) (Least absolute shrinkage and selection operator) problem
+* [Lasso](https://en.wikipedia.org/wiki/Lasso_(statistics)) (Least absolute shrinkage and selection operator) problem
 * [Elastic Net](https://en.wikipedia.org/wiki/Elastic_net_regularization) problem
+* [Group lasso](https://en.wikipedia.org/wiki/Lasso_(statistics)#Group_lasso) problem
 * [Matrix completion](https://en.wikipedia.org/wiki/Matrix_completion) problem with trace norm minimization 
 * L1-norm logistic regression
 * L1-norm linear [support vector machine](https://en.wikipedia.org/wiki/Support_vector_machine) (SVM)
@@ -80,7 +81,7 @@ noise_level = 0.01;
 [A, b, x0, lambda] = generate_lasso_data(n, d, k, noise_level);
 
 % define problem
-problem = lasso(A, b, lambda);
+problem = lasso_problem(A, b, lambda);
 
 % perform algorithms (FISTA and ADMM)
 options.w_init = zeros(n,1); 
@@ -168,7 +169,7 @@ options.w_init = zeros(n,1);
 % perform cross-validations
 for i=1:length(lambda_array)
     lambda = lambda_array(i);
-    problem = lasso(A, b, lambda);
+    problem = lasso_problem(A, b, lambda);
 
     [W(:,i), infos] = fista(problem, options);
     l1_norm(i) = infos.reg(end);
@@ -205,6 +206,6 @@ If you have any problems or questions, please contact the author: [Hiroyuki Kasa
 Release Notes
 --------------
 
-* Version 1.0.0 (Nov. 24, 2017)
+* Version 1.0.0 (April 24, 2017)
     - Initial version.
 

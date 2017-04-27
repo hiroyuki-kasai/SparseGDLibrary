@@ -18,7 +18,7 @@ function [ alpha ] = backtracking_line_search(problem, p, x, rho, c)
 %       Algorithm 3.1 in Section 3.1.
 %
 %
-% This file is part of GDLibrary.
+% This file is part of SGDLibrary, GDLibrary and SparseGDLibrary.
 %
 % Created by H.Kasai on Feb. 29, 2016
 

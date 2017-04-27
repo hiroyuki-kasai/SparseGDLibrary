@@ -1,6 +1,6 @@
 function [ step ] = tfocs_backtracking_search(step_in, w, w_old, grad, grad_old, c1, c2)
 %
-% This file is part of GDLibrary.
+% This file is part of SGDLibrary, GDLibrary and SparseGDLibrary.
 %
 % This file originally comes from https://github.com/bodono/apg.
 % Modifeid by H.Kasai on Apr. 17, 2017

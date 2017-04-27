@@ -12,7 +12,7 @@ function [data] = logistic_regression_data_generator(n, d)
 %       data.y_test     test data of y.
 %       data.w_opt      solusion.
 %
-% This file is part of SGDLibrary.
+% This file is part of SGDLibrary, GDLibrary and SparseGDLibrary.
 %
 % Created H.Kasai on Oct. 25, 2016
 

@@ -66,7 +66,7 @@ function [ ] = display_graph(x_category, y_category, algorithm_list, w_list, inf
             elseif strcmp(x_category, 'lambda') || strcmp(x_category, 'l1-norm')
                 x_plot_data = w_list;     
             elseif strcmp(x_category, 'coeff_pos')
-                x_plot_data = [1:length(w_list{alg_idx})];                  
+                x_plot_data = [1:length(w_list{alg_idx})];                   
             else
             end
             
@@ -86,7 +86,11 @@ function [ ] = display_graph(x_category, y_category, algorithm_list, w_list, inf
             elseif strcmp(y_category, 'coeffs') || strcmp(y_category, 'aprox_err')
                 y_plot_data = info_list{1};     
             elseif strcmp(y_category, 'coeff_amp') || strcmp(y_category, 'aprox_err')
-                y_plot_data = info_list{alg_idx};                     
+                y_plot_data = info_list{alg_idx};  
+            elseif strcmp(y_category, 'resi_normg')
+                y_plot_data = info_list{alg_idx}.resi_normg; 
+            elseif strcmp(y_category, 'rank')
+                y_plot_data = info_list{alg_idx}.rank;                   
             end
             
             if strcmp(scale_type, 'semilogy')
@@ -152,7 +156,11 @@ function [ ] = display_graph(x_category, y_category, algorithm_list, w_list, inf
     elseif strcmp(y_category, 'aprox_err')
         ylabel('Approximation error', 'FontSize', fontsize); 
     elseif strcmp(y_category, 'coeff_amp') 
-        ylabel('Coefficient amplitude', 'FontSize', fontsize);          
+        ylabel('Coefficient amplitude', 'FontSize', fontsize);  
+    elseif strcmp(y_category, 'resi_normg') 
+        ylabel('Norm of residual', 'FontSize', fontsize);  
+    elseif strcmp(y_category, 'rank') 
+        ylabel('Rank', 'FontSize', fontsize);          
     end
     
     if ~strcmp(y_category, 'coeffs')

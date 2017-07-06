@@ -1,5 +1,6 @@
-function [w, infos] = fista(problem, options)
-% Fast iterative soft (shrinkage)-thresholding algorithm (FISTA) for LASSO problem.
+function [w, infos] = admm_trace_norm(problem, options)
+% The alternating direction method of multipliers (ADMM) algorithm for
+% minimization problem with trace norm.
 %
 % Inputs:
 %       problem     function (cost/grad/hess)
@@ -10,24 +11,13 @@ function [w, infos] = fista(problem, options)
 %
 % This file is part of SparseGDLibrary.
 %
-% Created by H.Kasai on Apr. 18, 2017
-% Modified by H.Kasai on Apr. 24, 2017
+% Created by H.Kasai on June 30, 2016
 
 
     % set dimensions and samples
     d = problem.dim();
-    if isfield(problem, 'n')
-        n = problem.samples(); 
-    else 
-        n = 1;
-    end
-%     if isfield(problem, 'Lap')
-%         Lap = problem.Lap();
-%     else
-%         Lap = eye(d);
-%     end
+    n = problem.samples();  
 
-    
     % extract options
     if ~isfield(options, 'tol_sol_optgap')
         tol_sol_optgap = 1.0e-12;
@@ -69,37 +59,55 @@ function [w, infos] = fista(problem, options)
         f_opt = -Inf;
     else
         f_opt = options.f_opt;
-    end    
+    end 
     
     if ~isfield(options, 'solution')
         solution = -Inf;
     else
         solution = options.solution;
-    end      
+    end     
     
     if ~isfield(options, 'store_w')
         store_w = false;
     else
         store_w = options.store_w;
+    end  
+    
+    % augmented Lagrangian parameter
+    if ~isfield(options, 'rho')
+        rho = 1;
+    else
+        rho = options.rho;
+    end  
+    
+    if ~isfield(options, 'mode')
+        mode = 'na';
+    else
+        mode = options.mode;
+    end  
+    
+    if strcmp(mode, 'clustering')
+        if ~isfield(options, 'class_num')
+            class_num = 1;
+        else
+            class_num = options.class_num;
+        end 
+        
+        if ~isfield(options, 'round_precision')
+            round_precision = 2;
+        else
+            round_precision = options.round_precision;
+        end         
     end
     
-    % Lipschitz constant of the gradient of f
-    if ~isfield(options, 'L')
-        if isfield(problem, 'L')
-            L = problem.L();
-        else
-            L = 1;
-        end
-    else
-        L = options.L;
-    end     
+    %
+    X = problem.X();    
+    L = problem.L();
     
-    % initialise
     iter = 0;
-    Linv = 1/L;
-    w_prev = w;
-    y_prev = w;
-    t_prev = 1;
+    Z = L*w;
+    U = zeros(size(Z));       
+    I_rhoLTL = eye(n) + rho*(L'*L);
     
     % store first infos
     clear infos;
@@ -111,7 +119,7 @@ function [w, infos] = fista(problem, options)
     optgap = f_val - f_opt;
     infos.optgap = optgap;
     sol_optgap = norm(w - solution);
-    infos.sol_optgap = sol_optgap;        
+    infos.sol_optgap = sol_optgap;       
     grad = problem.full_grad(w);
     gnorm = norm(grad);
     infos.gnorm = gnorm;
@@ -119,7 +127,7 @@ function [w, infos] = fista(problem, options)
         infos.reg = problem.reg(w);   
     end    
     if store_w
-        infos.w = w;       
+        infos.w = w(:);       
     end
     
     % set start time
@@ -127,17 +135,21 @@ function [w, infos] = fista(problem, options)
     
     % print info
     if verbose
-        fprintf('FISTA: Iter = %03d, cost = %.24e, gnorm = %.4e, optgap = %.4e, solution optgap = %.4e\n', iter, f_val, gnorm, optgap, sol_optgap);
+        fprintf('ADMM trace norm: Iter = %03d, cost = %.16e, gnorm = %.4e, optgap = %.4e, solution optgap = %.4e\n', iter, f_val, gnorm, optgap, sol_optgap);
     end      
 
     % main loop
-    while (optgap > tol_optgap) && (sol_optgap > tol_sol_optgap) && (gnorm > tol_gnorm) && (iter < max_iter)        
+    while (optgap > tol_optgap) && (sol_optgap > tol_sol_optgap) && (gnorm > tol_gnorm) && (iter < max_iter)          
 
-        % calculate gradient
-        grad_y_old = problem.full_grad(y_prev);
-        u = y_prev - Linv * grad_y_old;
-        w = problem.prox(u, Linv);
-      
+        % update w
+        w = I_rhoLTL \ (X + rho*L'*(Z-U));
+        
+        % update Z
+        Z = problem.prox(L*w + U, 1/rho);
+        
+        % update U
+        U = L*w + U - Z;
+    
         % calculate gradient
         grad = problem.full_grad(w);
 
@@ -158,7 +170,7 @@ function [w, infos] = fista(problem, options)
         infos.time = [infos.time elapsed_time];        
         infos.grad_calc_count = [infos.grad_calc_count iter*n];      
         infos.optgap = [infos.optgap optgap]; 
-        infos.sol_optgap = [infos.sol_optgap sol_optgap];     
+        infos.sol_optgap = [infos.sol_optgap sol_optgap];  
         infos.cost = [infos.cost f_val];
         infos.gnorm = [infos.gnorm gnorm]; 
         if isfield(problem, 'reg')
@@ -166,22 +178,21 @@ function [w, infos] = fista(problem, options)
             infos.reg = [infos.reg reg];
         end        
         if store_w
-            infos.w = [infos.w w];         
-        end        
-       
+            infos.w = [infos.w w(:)];         
+        end       
+        
         % print info
         if verbose
-            fprintf('FISTA: Iter = %03d, cost = %.24e, gnorm = %.4e, optgap = %.4e, solution optgap = %.4e\n', iter, f_val, gnorm, optgap, sol_optgap);
+            fprintf('ADMM Trace norm: Iter = %03d, cost = %.16e, gnorm = %.4e, optgap = %.4e, solution optgap = %.4e\n', iter, f_val, gnorm, optgap, sol_optgap);
         end  
         
-        % update paramters
-        t = 0.5*(1 + sqrt(1 + 4 * t_prev^2));
-        y = w + (t_prev - 1)/t * (w - w_prev);
-        
-        % store parameters
-        w_prev = w;
-        t_prev = t;
-        y_prev = y;           
+        % check stop condtion provided by user
+        if isfield(options, 'stopfun')
+            userstop = options.stopfun(problem, w, infos, options);
+            if userstop
+                break;
+            end
+        end
     end
     
     if gnorm < tol_gnorm
@@ -192,6 +203,6 @@ function [w, infos] = fista(problem, options)
         fprintf('Solution optimality gap tolerance reached: tol_sol_optgap = %g\n', tol_sol_optgap);        
     elseif iter == max_iter
         fprintf('Max iter reached: max_iter = %g\n', max_iter);
-    end    
+    end     
     
 end

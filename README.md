@@ -3,9 +3,9 @@
 
 Authors: [Hiroyuki Kasai](http://kasai.kasailab.com/)
 
-Last page update: April 27, 2017
+Last page update: July 07, 2017
 
-Latest library version: 1.0.1 (see Release notes for more info)
+Latest library version: 1.0.7 (see Release notes for more info)
 
 Introduction
 ----------
@@ -35,6 +35,10 @@ Supported problems
 * [Matrix completion](https://en.wikipedia.org/wiki/Matrix_completion) problem with trace norm minimization 
 * L1-norm logistic regression
 * L1-norm linear [support vector machine](https://en.wikipedia.org/wiki/Support_vector_machine) (SVM)
+* [Robust principal component analysis (PCA)](https://en.wikipedia.org/wiki/Robust_principal_component_analysis) problem 
+    - Video background subtraction application
+    - Image inpainting application
+* Trace norm convex clustering problem
 
 Folders and files
 ---------
@@ -205,6 +209,8 @@ If you have any problems or questions, please contact the author: [Hiroyuki Kasa
 
 Release Notes
 --------------
+* Version 1.0.2 (July 07, 2017)
+    - Robust PCA problem and trace norm convex clustering problem, and those related solvers and test files are added.
 * Version 1.0.1 (April 27, 2017)
     - Group lasso problem is added.
 * Version 1.0.0 (April 24, 2017)

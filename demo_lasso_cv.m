@@ -1,12 +1,12 @@
 function demo_lasso_cv()
 % demonstration file for SparseGDLibrary.
 %
-% This file illustrates how to use this library in case of "lasso" 
-% problem with cross-validation. This demonstrates the FISTA algorithm.
+% This file illustrates how to use this library in case of problems with 
+% trace norm minimization. 
 %
 % This file is part of SparseGDLibrary.
 %
-% Created by H.Kasai on Apr. 24, 2017
+% Created by H.Kasai on June. 01, 2017
 
     clc;
     clear;

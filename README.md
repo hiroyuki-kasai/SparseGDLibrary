@@ -101,7 +101,7 @@ display_graph('iter','sol_optimality_gap', {'FISTA', 'ADMM'}, {w_fista, w_admm},
 
 * Output results 
 
-<img src="https://dl.dropboxusercontent.com/u/869853/Github/SparseGDLibrary/images/iter_cost_solgap.png" width="900">
+<img src="http://www.kasailab.com/Public/Github/SparseGDLibrary/images/iter_cost_solgap.png" width="900">
 <br /><br />
 
 
@@ -115,7 +115,7 @@ The decrease of the l1-norm of the solution according to iterations is illustrat
 display_graph('iter','l1-norm', {'FISTA', 'ADMM'}, {w_fista, w_admm}, {info_fista, info_admm}, 'linear');
 ```
 
-<img src="https://dl.dropboxusercontent.com/u/869853/Github/SparseGDLibrary/images/iter_l1norm.png" width="500">
+<img src="http://www.kasailab.com/Public/Github/SparseGDLibrary/images/iter_l1norm.png" width="500">
 <br /><br />
 
 
@@ -127,7 +127,7 @@ display_graph('coeff_pos','coeff_amp', {'FISTA','ADMM','Original (x0)'}, {w_fist
 
 * Output results 
 
-<img src="https://dl.dropboxusercontent.com/u/869853/Github/SparseGDLibrary/images/coeff_pos_amp.png" width="500">
+<img src="http://www.kasailab.com/Public/Github/SparseGDLibrary/images/coeff_pos_amp.png" width="500">
 <br /><br />
 
 
@@ -194,7 +194,7 @@ end
 
 * Output results 
 
-<img src="https://dl.dropboxusercontent.com/u/869853/Github/SparseGDLibrary/images/lasso_cv.png" width="900">
+<img src="http://www.kasailab.com/Public/Github/SparseGDLibrary/images/lasso_cv.png" width="900">
 <br /><br />
 
 

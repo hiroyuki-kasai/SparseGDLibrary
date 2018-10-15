@@ -15,7 +15,7 @@ The SparseGDLibrary is a **pure-Matlab** library of a collection of **unconstrai
 List of sparse gradient algorithms available in SparseGDLibrary
 ---------
 - **APG** (Accelerated gradient descent, i.e., Nesterov AGD)
-- **[ISTA]** (Iterative shrinkage-thresholding algorithm)
+- **ISTA** (Iterative shrinkage-thresholding algorithm)
 - **[FISTA](http://epubs.siam.org/doi/abs/10.1137/080716542)** (Fast iterative shrinkage-thresholding algorithm)
 - **[CD](https://en.wikipedia.org/wiki/Coordinate_descent)** (Coodinate descent) **for Lasso and Elastic Net** 
 - **[ADMM](http://stanford.edu/~boyd/admm.html)** (The alternating direction method of multipliers) **for Lasso**

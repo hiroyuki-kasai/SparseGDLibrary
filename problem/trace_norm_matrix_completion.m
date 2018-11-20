@@ -40,7 +40,7 @@ function [Problem] = trace_norm_matrix_completion(A, mask, lambda)
         diff = (L - A.*mask) .* (A.*mask ~= 0);
         trace_norm = reg(w);
 
-        f = 1/2 * norm(diff, 'fro') + lambda * trace_norm;
+        f = 1/2 * norm(diff, 'fro')^2 + lambda * trace_norm;
     end
 
     % calculate trace norm
